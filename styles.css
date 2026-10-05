@@ -1,0 +1,580 @@
+/* ==================================================
+   1. VARIABLES CSS
+
+   Guardamos los colores que vamos a reutilizar
+   durante toda la página.
+
+   Si queremos cambiar la paleta más adelante,
+   podemos hacerlo desde un único lugar.
+   ================================================== */
+
+:root {
+    --color-fondo: #e8edf1;
+    --color-principal: #30343f;
+    --color-secundario: #1a1b41;
+    --color-acento: #c62e65;
+    --color-botones: #629677;
+    --color-blanco: #ffffff;
+    --color-suave: #f4f6f8;
+    --color-destacado: #fff1f5;
+}
+
+
+/* ==================================================
+   2. CONFIGURACIÓN GENERAL
+
+   El navegador utiliza normalmente 16px
+   como tamaño base.
+
+   Con 62.5% conseguimos aproximadamente:
+
+   1rem = 10px
+   1.6rem = 16px
+   2rem = 20px
+   3rem = 30px
+   ================================================== */
+
+html {
+    font-size: 62.5%;
+}
+
+
+/* ==================================================
+   3. RESET BÁSICO
+
+   Todos los elementos generan una caja.
+
+   Con border-box hacemos que el width indicado
+   incluya:
+
+   contenido + padding + border
+
+   Esto facilita mucho el cálculo del tamaño
+   de las cajas.
+   ================================================== */
+
+
+
+
+/* ==================================================
+   4. BODY
+
+   El navegador añade un margin al body
+   por defecto.
+
+   Lo eliminamos para controlar nosotros
+   el espacio exterior de la página.
+   ================================================== */
+
+body {
+    margin: 0;
+
+    background-color: var(--color-fondo);
+
+    color: var(--color-principal);
+
+    font-family: system-ui, sans-serif;
+
+    font-size: 1.6rem;
+
+    line-height: 1.6;
+}
+
+
+/* ==================================================
+   5. HEADER
+
+   Utilizamos un degradado como fondo.
+
+   linear-gradient crea una transición
+   entre varios colores.
+
+   135deg indica la dirección del degradado.
+
+   0%, 50% y 100% indican la posición
+   de cada color.
+   ================================================== */
+
+header {
+    background: linear-gradient(
+        135deg,
+        #c27898 0%,
+        #9da4d6 50%,
+        #94bbe9 100%
+    );
+
+    color: var(--color-principal);
+
+    padding: 3rem;
+}
+
+
+/* ==================================================
+   6. FIGURE
+
+   figure es el elemento padre que contiene
+   nuestra imagen.
+
+   text-align: center centra el contenido inline
+   que hay dentro del figure.
+   ================================================== */
+
+figure {
+    text-align: center;
+}
+
+
+/* ==================================================
+   7. IMAGEN DEL HEADER
+
+   Damos el mismo width y height para crear
+   una caja cuadrada.
+
+   border-radius: 50% convierte esa caja
+   cuadrada en un círculo.
+
+   object-fit: cover hace que la imagen rellene
+   el espacio sin deformarse.
+   ================================================== */
+
+.logo-css {
+    width: 8rem;
+    height: 8rem;
+
+    border: 3px solid var(--color-blanco);
+
+    border-radius: 50%;
+
+   
+}
+
+
+/* ==================================================
+   8. TÍTULO PRINCIPAL
+   ================================================== */
+
+h1 {
+    color: var(--color-secundario);
+
+    font-size: 4rem;
+
+    font-weight: 700;
+
+    text-align: center;
+
+    margin-top: 1rem;
+
+    margin-bottom: 1rem;
+}
+
+
+/* ==================================================
+   9. NAVEGACIÓN
+
+   nav es el elemento padre que contiene
+   todos los enlaces.
+
+   Como los enlaces <a> son elementos inline,
+   podemos centrar el conjunto aplicando
+   text-align: center al padre.
+   ================================================== */
+
+nav {
+    margin-top: 3rem;
+
+    padding: 2rem;
+
+    border: 2px solid var(--color-secundario);
+
+    border-radius: 3rem;
+
+    background-color: rgba(255, 255, 255, 0.35);
+
+    text-align: center;
+}
+
+
+/* ==================================================
+   10. ENLACES
+
+   Los navegadores suelen mostrar los enlaces
+   en azul y subrayados.
+
+   text-decoration: none elimina el subrayado.
+
+   color: inherit hace que el enlace herede
+   el color de su elemento padre.
+   ================================================== */
+
+a {
+    margin-right: 4rem;
+
+    text-decoration: none;
+
+    color: inherit;
+}
+
+
+/* ==================================================
+   11. CONTENIDO PRINCIPAL
+
+   width: 90% hace que el main tenga un ancho
+   relativo al espacio disponible.
+
+   max-width: 100rem pone un límite:
+   nunca crecerá más de 100rem.
+
+   Esta combinación es más flexible que escribir:
+
+   width: 1000px;
+
+   porque permite adaptarse mejor a pantallas
+   más pequeñas.
+
+   margin: 2rem auto significa:
+
+   2rem     → arriba y abajo
+   auto     → izquierda y derecha
+
+   El navegador reparte el espacio sobrante
+   y centra horizontalmente el main.
+   ================================================== */
+
+main {
+    width: 90%;
+
+    max-width: 100rem;
+
+    margin: 2rem auto;
+}
+
+
+/* ==================================================
+   12. SECCIONES
+
+   Todas las etiquetas section reciben
+   el mismo estilo porque estamos utilizando
+   un selector de etiqueta.
+   ================================================== */
+
+section {
+    background-color: var(--color-blanco);
+
+    border: 2px solid #d5d9df;
+
+    border-radius: 1rem;
+
+    margin-bottom: 3rem;
+
+    padding: 3rem;
+}
+
+
+/* ==================================================
+   13. TÍTULOS DE SEGUNDO NIVEL
+   ================================================== */
+
+h2 {
+    color: var(--color-secundario);
+
+    font-size: 2.8rem;
+
+    margin-top: 0;
+}
+
+
+/* ==================================================
+   14. TÍTULOS DE TERCER NIVEL
+   ================================================== */
+
+h3 {
+    color: var(--color-acento);
+
+    font-size: 2rem;
+}
+
+
+/* ==================================================
+   15. PÁRRAFOS
+
+   Añadimos separación debajo de cada párrafo.
+   ================================================== */
+
+p {
+    margin-bottom: 1.5rem;
+}
+
+
+/* ==================================================
+   16. CLASE DESTACADO
+
+   Una clase puede reutilizarse
+   en diferentes elementos.
+
+   El borde izquierdo ayuda a llamar
+   la atención sobre el contenido.
+   ================================================== */
+
+.destacado {
+    background-color: var(--color-destacado);
+
+    border-left: 5px solid var(--color-acento);
+
+    padding: 1.5rem;
+}
+
+
+/* ==================================================
+   17. CLASE RECORDATORIO
+   ================================================== */
+
+.recordatorio {
+    background-color: var(--color-fondo);
+
+    border: 2px solid var(--color-secundario);
+
+    border-radius: 0.5rem;
+
+    padding: 1.5rem;
+}
+
+
+/* ==================================================
+   18. CLASE EJEMPLO
+   ================================================== */
+
+.ejemplo {
+    background-color: var(--color-suave);
+
+    border: 2px solid var(--color-secundario);
+
+    border-radius: 0.8rem;
+
+    margin: 2rem 0;
+
+    padding: 2rem;
+}
+
+
+/* ==================================================
+   19. LISTAS
+
+   Una coma permite aplicar la misma regla
+   a varios selectores.
+
+   En este caso aplicamos estos estilos tanto
+   a ul como a ol.
+   ================================================== */
+
+ul,
+ol {
+    background-color: var(--color-fondo);
+
+    border-radius: 0.8rem;
+
+    padding: 2rem 4rem;
+}
+
+
+/* Cada elemento de la lista tendrá
+   separación respecto al siguiente. */
+
+li {
+    margin-bottom: 1rem;
+}
+
+
+/* ==================================================
+   20. CAJA PARA PRACTICAR BOX MODEL
+
+   Esta caja permite observar claramente:
+
+   contenido
+   padding
+   border
+   margin
+   ================================================== */
+
+.caja-ejemplo {
+    background-color: var(--color-destacado);
+
+    border: 4px solid var(--color-acento);
+
+    margin: 3rem 0;
+
+    padding: 2rem;
+}
+
+
+/* ==================================================
+   21. CAJAS FORMATIVAS
+
+   Varias cajas utilizan la misma clase.
+
+   Así vemos una de las ventajas de las clases:
+   podemos reutilizar el mismo estilo.
+   ================================================== */
+
+.caja-formativa {
+    background-color: var(--color-suave);
+
+    border: 2px solid var(--color-secundario);
+
+    border-radius: 0.8rem;
+
+    margin: 3rem 0;
+
+    padding: 2rem;
+}
+
+
+/* ==================================================
+   22. MARGIN AUTO
+
+   Esta caja solo ocupa el 70% del ancho.
+
+   Por eso queda espacio libre a izquierda
+   y derecha.
+
+   margin: 3rem auto permite que el navegador
+   reparta ese espacio sobrante y centre la caja.
+   ================================================== */
+
+.caja-auto {
+    width: 70%;
+
+    margin: 3rem auto;
+}
+
+
+/* ==================================================
+   23. IMAGEN DEL CONTENIDO
+
+   width: 100% permite que la imagen use
+   el espacio disponible.
+
+   max-width impide que crezca más
+   de lo que queremos.
+
+   Al no fijar height, mantenemos
+   la proporción natural de la imagen.
+   ================================================== */
+
+.imagen-tema {
+    width: 100%;
+
+    max-width: 60rem;
+
+    border: 4px solid var(--color-secundario);
+
+    border-radius: 1rem;
+}
+
+
+/* ==================================================
+   24. CAJA CON IMAGEN DE FONDO
+
+   DE MOMENTO NO SE UTILIZA.
+
+   Dejamos este código comentado para trabajarlo
+   cuando estudiemos:
+
+   - background-image
+   - varias capas de fondo
+   - transparencia
+   - contraste
+   - legibilidad
+
+   ==================================================
+
+.caja-fondo {
+
+    background-image:
+
+        linear-gradient(
+            rgba(26, 27, 65, 0.55),
+            rgba(26, 27, 65, 0.55)
+        ),
+
+        url("images/fondo.png");
+
+
+    background-size: cover;
+
+    background-position: center;
+
+    color: var(--color-blanco);
+
+    width: 100%;
+
+    max-width: 70rem;
+
+    margin: 3rem auto;
+
+    padding: 4rem 3rem;
+
+    border-radius: 1rem;
+}
+
+*/
+
+
+/* ==================================================
+   25. DETAILS Y SUMMARY
+
+   details permite crear contenido
+   que se puede abrir y cerrar.
+
+   summary es la parte visible
+   sobre la que hacemos clic.
+
+   Funcionan directamente con HTML,
+   sin necesidad de JavaScript.
+   ================================================== */
+
+details {
+    margin: 2rem 0;
+
+    padding: 1.5rem;
+
+    background-color: var(--color-suave);
+
+    border: 2px solid var(--color-secundario);
+
+    border-radius: 0.8rem;
+}
+
+
+/* ==================================================
+   SUMMARY
+
+   El navegador ya aplica un comportamiento
+   interactivo a summary.
+
+   Solo modificamos ligeramente su aspecto.
+   ================================================== */
+
+summary {
+    color: var(--color-secundario);
+
+    font-weight: 700;
+
+    font-size: 1.8rem;
+
+    
+}
+
+
+/* ==================================================
+   26. FOOTER
+   ================================================== */
+
+footer {
+    background-color: var(--color-principal);
+
+    color: var(--color-blanco);
+
+    padding: 3rem;
+
+    text-align: center;
+}

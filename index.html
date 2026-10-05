@@ -1,0 +1,858 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+
+    <!-- Configuración básica del documento -->
+    <meta charset="UTF-8">
+
+    <!-- Permite adaptar la página al ancho del dispositivo -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon de la página -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+    <!-- Título que aparece en la pestaña del navegador -->
+    <title>Repaso de fundamentos CSS</title>
+
+    
+
+</head>
+
+
+<body>
+
+    <!-- ========================================
+         ENCABEZADO DE LA PÁGINA
+         ======================================== -->
+
+    <header>
+
+        <!--
+        figure permite agrupar contenido visual,
+        como una imagen, que forma una unidad
+        dentro de la página.
+        -->
+
+        <figure>
+
+            <img
+                class="logo-css"
+                src="images/css.png"
+                alt="Imagen representativa de CSS"
+            >
+
+            <figcaption>
+                CSS · Hojas de estilo en cascada
+            </figcaption>
+
+        </figure>
+
+
+      
+
+        <h1>Mi guía visual de CSS</h1>
+
+
+        <p>
+            Con este ejercicio vamos a repasar todo lo que hemos aprendido
+            sobre CSS.
+
+            Para aprender no hay mejor manera que practicar.
+
+            Ya verás como es mucho más fácil de lo que parece.
+        </p>
+
+
+        <!--
+        strong y em aportan significado al contenido.
+
+        strong indica que un contenido tiene especial importancia.
+
+        em se utiliza para dar énfasis a una parte del texto.
+        -->
+
+
+        <!-- ========================================
+             NAVEGACIÓN INTERNA
+             ======================================== -->
+
+        <nav>
+
+            <a href="#fundamentos">Fundamentos</a>
+
+            <a href="#selectores">Selectores</a>
+
+            <a href="#colores">Colores</a>
+
+            <a href="#tamano">Tamaño</a>
+
+            <a href="#cajas">Modelo de caja</a>
+
+            <a href="#imagenes">Imágenes</a>
+
+            <a href="#recordatorio">Resumen</a>
+
+        </nav>
+
+
+       
+
+    </header>
+
+
+
+    <!-- ========================================
+         CONTENIDO PRINCIPAL
+         ======================================== -->
+
+    <main>
+
+
+        <!-- ========================================
+             1. FUNDAMENTOS mantenemos los ID para que funcione la navegación interna
+             ======================================== -->
+
+        <section id="fundamentos">
+
+            <h2>1. Qué es CSS</h2>
+
+
+            <p>
+                CSS es el lenguaje que usamos para decidir
+                el aspecto de una página HTML:
+                colores, letras, tamaños y espacios.
+            </p>
+
+
+            <p>
+                Para aplicar CSS a nuestra página HTML,
+                conectamos el archivo styles.css
+                desde el head del documento.
+            </p>
+
+
+            <!-- Una regla CSS -->
+
+            <div>
+
+                <h3>Una regla CSS</h3>
+
+
+                <p>
+                    <strong>Selector:</strong>
+                    indica qué elemento queremos modificar.
+                </p>
+
+
+                <p>
+                    <strong>Propiedad:</strong>
+                    indica qué característica queremos cambiar.
+                </p>
+
+
+                <p>
+                    <strong>Valor:</strong>
+                    indica cómo queremos que quede.
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+
+    <!-- ========================================
+         AYUDA PARA CREAR NUESTRO CSS
+         ======================================== -->
+
+    <details>
+
+        <summary>🎨 Antes de empezar: colores y estilos de nuestra página</summary>
+
+        <h2>Nuestra paleta de colores</h2>
+
+        <p>
+            Para no repetir los mismos colores continuamente,
+            vamos a guardar nuestra paleta en variables CSS.
+        </p>
+
+        <p>
+            Las declararemos en <code>:root</code> para poder
+            utilizarlas después en toda la página.
+        </p>
+
+        <ul>
+            <li>Fondo: <code>#e8edf1</code></li>
+            <li>Principal: <code>#30343F</code></li>
+            <li>Secundario: <code>#1A1B41</code></li>
+            <li>Acento: <code>#C62E65</code></li>
+            <li>Botones: <code>#629677</code></li>
+        </ul>
+
+        <p>Podemos declararlas así:</p>
+
+        <pre><code>:root {
+    --color-fondo: #e8edf1;
+    --color-principal: #30343F;
+    --color-secundario: #1A1B41;
+    --color-acento: #C62E65;
+    --color-botones: #629677;
+}</code></pre>
+
+
+        <h2>Degradado para el header</h2>
+
+        <p>
+            Para el fondo del encabezado vamos a utilizar
+            un degradado formado por tres colores.
+        </p>
+
+        <pre><code>background: linear-gradient(
+    135deg,
+    #c27898 0%,
+    #9da4d6 50%,
+    #94bbe9 100%
+);</code></pre>
+
+        <p>
+            <strong>135deg</strong> indica la dirección del degradado
+            y los porcentajes indican en qué punto aparece cada color.
+        </p>
+
+
+        <h2>¿Por qué los enlaces aparecen azules?</h2>
+
+       <p>
+            Los navegadores aplican algunos estilos por defecto
+            a los enlaces, como el color azul y el subrayado.
+
+            Si queremos sustituirlos por nuestros propios estilos,
+            podemos usar <code>color: inherit;</code>
+            para que el enlace herede el color de su elemento padre
+            y <code>text-decoration: none;</code>
+            para eliminar el subrayado.
+        </p>
+
+
+        
+
+        
+
+        <pre><code>a {
+    color: inherit;
+    text-decoration: none;
+}</code></pre>
+
+        <p>
+            <code>color: inherit;</code> hace que el enlace
+            herede el color de su elemento padre.
+        </p>
+
+        <p>
+            <code>text-decoration: none;</code> elimina
+            el subrayado que añade el navegador.
+        </p>
+
+         <p>
+            Los enlaces del menú son anclas internas.
+            El valor que escribimos después de # debe coincidir
+            con el id del elemento al que queremos desplazarnos.
+        </p>
+
+
+        <p>
+            Por ejemplo, el enlace que utiliza
+            href="#cajas" nos lleva hasta el elemento
+            que tiene id="cajas".
+        </p>
+
+
+        
+    </details>
+
+
+   
+
+        <!-- ========================================
+             2. SELECTORES
+             ======================================== -->
+
+        <section id="selectores">
+
+            <h2>2. Cómo seleccionamos elementos</h2>
+
+
+            <p>
+                Antes de escribir CSS debemos pensar
+                qué elemento queremos modificar
+                y después elegir el selector adecuado.
+            </p>
+
+
+            <ul>
+
+                <li>
+                    <strong>Selector de etiqueta:</strong>
+                    modifica todos los elementos de ese tipo.
+                </li>
+
+
+                <li>
+                    <strong>Selector de clase:</strong>
+                    permite aplicar un mismo estilo
+                    a varios elementos.
+                </li>
+
+
+                <li>
+                    <strong>Selector de ID:</strong>
+                    permite identificar un elemento concreto
+                    de la página.
+                </li>
+
+            </ul>
+
+
+            <p>
+                Este párrafo tiene una clase llamada destacado.
+
+                La misma clase podría utilizarse
+                en otros elementos de la página.
+            </p>
+
+
+            <p>
+                La cascada determina qué regla termina aplicándose
+                cuando varias reglas afectan al mismo elemento.
+            </p>
+
+
+            <p>
+                Algunas propiedades,
+                como el color o el tipo de letra,
+                pueden heredarse de un elemento padre.
+            </p>
+
+
+            <p>
+                Por ahora trabajaremos únicamente con selectores
+                de etiqueta, clase e ID.
+            </p>
+
+        </section>
+
+
+
+        <!-- ========================================
+             3. COLORES Y TIPOGRAFÍA
+             ======================================== -->
+
+        <section id="colores">
+
+            <h2>3. Colores y tipografía</h2>
+
+
+            <p>
+                El color y la tipografía nos ayudan
+                a organizar visualmente la información
+                y mejorar la lectura.
+            </p>
+
+
+            <p>
+                Podemos cambiar el color del texto,
+                el color de fondo,
+                el tipo de letra,
+                su tamaño,
+                su grosor
+                y el espacio entre líneas.
+            </p>
+
+
+            <p>
+                Prueba a modificar el tamaño de letra,
+                el grosor y el interlineado de este párrafo
+                y observa cómo cambia su lectura.
+            </p>
+
+
+            <!--
+            ========================================
+            CAJA CON IMAGEN DE FONDO
+
+            Esta parte queda preparada para trabajar
+            más adelante la imagen de fondo,
+            la transparencia y la legibilidad.
+
+            <div class="caja-fondo">
+
+                <h3>Antes que diseño, usabilidad</h3>
+
+                <p>
+                    Cuando colocamos texto sobre una imagen,
+                    debemos asegurarnos de que se puede leer correctamente.
+
+                    Una capa semitransparente puede reducir
+                    el contraste visual del fondo
+                    y facilitar la lectura.
+                </p>
+
+            </div>
+
+            ========================================
+            -->
+
+        </section>
+
+
+
+        <!-- ========================================
+             4. TAMAÑO DE LOS ELEMENTOS
+             ======================================== -->
+
+        <section id="tamano">
+
+            <h2>4. Tamaño de los elementos</h2>
+
+
+            <p>
+                La propiedad width permite establecer
+                el ancho de un elemento.
+            </p>
+
+
+            <p>
+                Si utilizamos un valor fijo muy grande,
+                como 900px,
+                la caja puede desbordarse
+                en pantallas más pequeñas.
+            </p>
+
+
+            <p>
+                Por eso muchas veces utilizamos
+                un ancho relativo,
+                como un porcentaje,
+                junto con max-width.
+            </p>
+
+
+            <p>
+                max-width establece el ancho máximo
+                que puede alcanzar una caja.
+
+                De esta forma puede adaptarse
+                a espacios más pequeños
+                sin superar el límite indicado.
+            </p>
+
+
+            <p>
+                min-width establece el ancho mínimo
+                que puede tener un elemento.
+            </p>
+
+
+            <p>
+                Debemos utilizar min-width con cuidado,
+                porque impedir que una caja se haga más pequeña
+                también puede provocar desbordamiento
+                en pantallas estrechas.
+            </p>
+
+
+            <p>
+                Una altura fija puede producir problemas
+                cuando el contenido necesita más espacio.
+
+                Antes de utilizar height,
+                piensa si el contenido puede cambiar o crecer.
+            </p>
+
+        </section>
+
+
+
+        <!-- ========================================
+             5. MODELO DE CAJA
+             ======================================== -->
+
+        <section id="cajas">
+
+            <h2>5. El modelo de caja</h2>
+
+
+            <p>
+                Todo elemento HTML genera una caja.
+            </p>
+
+
+            <p>
+                El contenido se encuentra en el interior.
+
+                Alrededor podemos encontrar
+                padding, border y margin.
+            </p>
+
+
+            <p>
+                Esta caja nos permite observar
+                el modelo de caja.
+
+                Cambia su padding y su margin
+                para comprobar qué ocurre.
+            </p>
+
+
+
+            <!-- ========================================
+                 PADDING
+                 ======================================== -->
+
+            <div>
+
+                <h3>Padding: espacio dentro de la caja</h3>
+
+
+                <p>
+                    El padding crea espacio
+                    entre el contenido
+                    y el borde de una caja.
+                </p>
+
+
+                <p>
+                    Prueba a aumentar el padding.
+
+                    ¿Qué ocurre con la distancia
+                    entre el texto y el borde?
+                </p>
+
+            </div>
+
+
+
+            <!-- ========================================
+                 MARGIN
+                 ======================================== -->
+
+            <div>
+
+                <h3>Margin: espacio fuera de la caja</h3>
+
+
+                <p>
+                    El margin crea espacio
+                    alrededor de una caja.
+                </p>
+
+
+                <p>
+                    No separa el contenido de su borde:
+
+                    separa la caja
+                    de los elementos
+                    que tiene alrededor.
+                </p>
+
+            </div>
+
+
+
+            <!-- ========================================
+                 LOS CUATRO LADOS
+                 ======================================== -->
+
+            <div>
+
+                <h3>Los cuatro lados de una caja</h3>
+
+
+                <p>
+                    Podemos modificar por separado
+                    la parte superior,
+                    derecha,
+                    inferior
+                    e izquierda.
+                </p>
+
+
+                <p>
+                    En margin podemos utilizar:
+
+                    margin-top,
+
+                    margin-right,
+
+                    margin-bottom
+
+                    y margin-left.
+                </p>
+
+
+                <p>
+                    Lo mismo ocurre con padding.
+                </p>
+
+
+                <p>
+                    Cuando escribimos cuatro valores juntos,
+                    el orden es:
+
+                    arriba,
+                    derecha,
+                    abajo
+                    e izquierda.
+                </p>
+
+
+                <p>
+                    Pero si escribimos solo dos valores,
+                    el primero se aplica
+                    a la parte superior e inferior,
+
+                    y el segundo
+                    a la parte izquierda y derecha.
+                </p>
+
+            </div>
+
+
+
+            <!-- ========================================
+                 MARGIN AUTO
+                 ======================================== -->
+
+            <div>
+
+                <h3>¿Qué hace margin: auto?</h3>
+
+
+                <p>
+                    El valor auto permite
+                    que el navegador calcule automáticamente
+                    el margen disponible.
+                </p>
+
+
+                <p>
+                    Si una caja tiene un ancho menor
+                    que el espacio disponible,
+
+                    el navegador puede repartir
+                    el espacio sobrante
+                    a izquierda y derecha.
+                </p>
+
+
+                <p>
+                    Esto permite centrar horizontalmente
+                    determinadas cajas.
+                </p>
+
+
+                <p>
+                    Cambia el ancho de esta caja
+                    y observa qué ocurre.
+                </p>
+
+            </div>
+
+
+
+            <!-- ========================================
+                 BOX-SIZING
+                 ======================================== -->
+
+            <p>
+                Con box-sizing: border-box,
+                el ancho indicado para una caja
+                incluye su contenido,
+                el padding
+                y el borde.
+            </p>
+
+
+            <p>
+                Esto significa que al calcular
+                el ancho de una caja,
+
+                no necesitamos sumar
+                el padding y el borde,
+
+                ya que están incluidos
+                en el ancho total.
+            </p>
+
+        </section>
+
+
+
+        <!-- ========================================
+             6. IMÁGENES
+             ======================================== -->
+
+        <section id="imagenes">
+
+            <h2>6. Imágenes</h2>
+
+
+            <p>
+                Una imagen también ocupa una caja
+                y podemos controlar su tamaño
+                desde CSS.
+            </p>
+
+
+            <img
+                class="imagen-tema"
+                src="images/css.png"
+                alt="Estudiante aprendiendo los fundamentos de CSS"
+            >
+
+
+            <p>
+                Prueba a modificar:
+
+                el ancho,
+
+                el ancho máximo,
+
+                el borde
+
+                y el redondeado de las esquinas
+                de esta imagen.
+            </p>
+
+
+            <p>
+                Si establecemos un ancho para una imagen,
+                debemos evitar deformarla.
+            </p>
+
+        </section>
+
+
+
+        <!-- ========================================
+             7. RECORDATORIO FINAL
+             ======================================== -->
+
+        <section id="recordatorio">
+
+            <h2>7. Antes de escribir CSS, piensa</h2>
+
+
+            <ol>
+
+                <li>
+                    ¿Qué elemento quiero modificar?
+                </li>
+
+
+                <li>
+                    ¿Cómo voy a seleccionarlo?
+                </li>
+
+
+                <li>
+                    ¿Qué propiedad necesito?
+                </li>
+
+
+                <li>
+                    ¿Estoy cambiando su aspecto,
+                    su tamaño
+                    o el espacio de su caja?
+                </li>
+
+            </ol>
+
+
+
+            <!-- ========================================
+                 DETAILS Y SUMMARY
+                 ======================================== -->
+
+            <h3>Un elemento interactivo de HTML</h3>
+
+
+            <p>
+                HTML también incluye algunos elementos interactivos
+                que funcionan sin necesidad de JavaScript.
+            </p>
+
+
+            <p>
+                La etiqueta details permite crear
+                un bloque de contenido
+                que podemos abrir y cerrar.
+            </p>
+
+
+            <p>
+                La etiqueta summary contiene
+                el texto visible sobre el que hacemos clic
+                para mostrar u ocultar el contenido.
+            </p>
+
+
+            <p>
+                summary debe estar dentro de details
+                y normalmente aparece como su primer elemento.
+            </p>
+
+
+            <details>
+
+                <summary>Siguientes pasos</summary>
+
+
+                <p>
+                    Ya sabemos seleccionar elementos,
+                    cambiar colores,
+                    trabajar la tipografía,
+                    controlar tamaños
+                    y modificar las cajas.
+                </p>
+
+
+                <p>
+                    Hasta ahora los elementos aparecen
+                    siguiendo el flujo normal del documento.
+                </p>
+
+
+                <p>
+                    El siguiente paso será descubrir
+                    cómo podemos controlar su comportamiento
+                    mediante <strong>display</strong>.
+                </p>
+
+            </details>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ========================================
+         PIE DE PÁGINA
+         ======================================== -->
+
+    <footer>
+
+        <p>
+            Repaso de fundamentos CSS ·
+            Comprender los conceptos te ayudará a aplicarlos correctamente.
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
