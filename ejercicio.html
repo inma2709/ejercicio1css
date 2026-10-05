@@ -37,7 +37,6 @@
         <figure>
 
             <img
-                class="logo-css"
                 src="images/css.png"
                 alt="Imagen representativa de CSS"
             >
@@ -89,6 +88,8 @@
 
             <a href="#cajas">Modelo de caja</a>
 
+            <a href="#desbordamiento">Desbordamiento</a>
+
             <a href="#imagenes">Imágenes</a>
 
             <a href="#recordatorio">Resumen</a>
@@ -110,7 +111,7 @@
 
 
         <!-- ========================================
-             1. FUNDAMENTOS mantenemos los ID para que funcione la navegación interna
+             1. FUNDAMENTOS
              ======================================== -->
 
         <section id="fundamentos">
@@ -188,7 +189,10 @@
             <li>Principal: <code>#30343F</code></li>
             <li>Secundario: <code>#1A1B41</code></li>
             <li>Acento: <code>#C62E65</code></li>
-            <li>Botones: <code>#629677</code></li>
+            <li>Blanco: <code>#FFFFFF</code></li>
+            <li>Suave: <code>#F0E9FF</code></li>
+            <li>Destacado: <code>#FFF0B8</code></li>
+            <li>Aviso: <code>#E3F2FD</code></li>
         </ul>
 
         <p>Podemos declararlas así:</p>
@@ -198,7 +202,10 @@
     --color-principal: #30343F;
     --color-secundario: #1A1B41;
     --color-acento: #C62E65;
-    --color-botones: #629677;
+    --color-blanco: #FFFFFF;
+    --color-suave: #F0E9FF;
+    --color-destacado: #FFF0B8;
+    --color-aviso: #E3F2FD;
 }</code></pre>
 
 
@@ -316,7 +323,7 @@
 
 
             <p>
-                Este párrafo tiene una clase llamada destacado.
+                Este párrafo tiene una clase llamada destacado. Le hemos puesto un borde sólo a la izquierda.
 
                 La misma clase podría utilizarse
                 en otros elementos de la página.
@@ -337,8 +344,7 @@
 
 
             <p>
-                Por ahora trabajaremos únicamente con selectores
-                de etiqueta, clase e ID.
+                Soy un parrafo con la clase recordatorio. Aparezco con un estilo diferente para llamar la atención del usuario.
             </p>
 
         </section>
@@ -372,7 +378,7 @@
 
 
             <p>
-                Prueba a modificar el tamaño de letra,
+                 Soy un párrafo de ejemplo. Prueba a modificar el tamaño de letra,
                 el grosor y el interlineado de este párrafo
                 y observa cómo cambia su lectura.
             </p>
@@ -386,7 +392,7 @@
             más adelante la imagen de fondo,
             la transparencia y la legibilidad.
 
-            <div class="caja-fondo">
+            <div>
 
                 <h3>Antes que diseño, usabilidad</h3>
 
@@ -498,11 +504,12 @@
 
 
             <p>
-                Esta caja nos permite observar
-                el modelo de caja.
+                Esta es una caja real: el fondo llega hasta el padding,
+                el borde marca su límite y el margin la separa
+                de los elementos que tiene alrededor.
 
-                Cambia su padding y su margin
-                para comprobar qué ocurre.
+                Prueba primero a cambiar solo su padding
+                y después solo su margin.
             </p>
 
 
@@ -571,50 +578,12 @@
 
 
                 <p>
-                    Podemos modificar por separado
-                    la parte superior,
-                    derecha,
-                    inferior
-                    e izquierda.
-                </p>
+                    Podemos cambiar cada lado con propiedades como
+                    margin-top o padding-left. Con cuatro valores, el orden es
+                    arriba, derecha, abajo e izquierda. Con dos valores,
+                    el primero se aplica arriba y abajo, y el segundo a los lados.
 
-
-                <p>
-                    En margin podemos utilizar:
-
-                    margin-top,
-
-                    margin-right,
-
-                    margin-bottom
-
-                    y margin-left.
-                </p>
-
-
-                <p>
-                    Lo mismo ocurre con padding.
-                </p>
-
-
-                <p>
-                    Cuando escribimos cuatro valores juntos,
-                    el orden es:
-
-                    arriba,
-                    derecha,
-                    abajo
-                    e izquierda.
-                </p>
-
-
-                <p>
-                    Pero si escribimos solo dos valores,
-                    el primero se aplica
-                    a la parte superior e inferior,
-
-                    y el segundo
-                    a la parte izquierda y derecha.
+                    Prueba: <code>padding: 1rem 3rem;</code>.
                 </p>
 
             </div>
@@ -686,28 +655,96 @@
                 en el ancho total.
             </p>
 
+
+            <h3>Comprueba la diferencia</h3>
+
+            <p>
+                Las dos cajas de este ejemplo tienen exactamente las mismas medidas:
+                width: 32rem, padding: 2rem y borde: 8px.
+
+                La única propiedad que cambia es box-sizing.
+                La caja exterior usa content-box.
+                La caja interior usa border-box.
+            </p>
+
+            <div>
+                <strong>content-box</strong>
+
+                <p>
+                    El width solo mide el contenido.
+                    El padding y el borde se suman al ancho visible.
+                </p>
+                <div>
+                    <strong>border-box</strong>
+
+                    <p>
+                        Esta caja está dentro de la anterior. Tiene el mismo
+                        width, padding y borde, pero aquí el width ya incluye
+                        el padding y el borde.
+                    </p>
+                </div>
+            </div>
+
         </section>
 
 
 
         <!-- ========================================
-             6. IMÁGENES
+             6. CUANDO EL CONTENIDO NO CABE
+             ======================================== -->
+
+        <section id="desbordamiento">
+
+            <h2>6. Cuando el contenido no cabe</h2>
+
+            <p>
+                Una caja puede tener menos altura que el contenido que guarda.
+                La propiedad overflow permite decidir qué ocurre con ese contenido.
+            </p>
+
+            <div>
+
+                <h3>Una caja con texto largo</h3>
+
+                <p>
+                    Esta caja tiene una altura limitada, pero contiene más texto
+                    del que puede mostrar. Usa la barra de desplazamiento para
+                    leer todo su contenido.
+                </p>
+
+                <p>
+                    Con overflow: auto, la barra de desplazamiento aparece solo
+                    cuando hace falta. Prueba después los valores visible, hidden
+                    y scroll, uno cada vez.
+                </p>
+
+                <p>
+                    Explica qué valor permite leer el texto completo sin que salga
+                    de la caja y qué valor lo oculta.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             7. IMÁGENES
              ======================================== -->
 
         <section id="imagenes">
 
-            <h2>6. Imágenes</h2>
+            <h2>7. Imágenes</h2>
 
 
             <p>
-                Una imagen también ocupa una caja
-                y podemos controlar su tamaño
-                desde CSS.
+                Una imagen también ocupa una caja y podemos controlar
+                su tamaño desde CSS.
             </p>
 
 
             <img
-                class="imagen-tema"
                 src="images/css.png"
                 alt="Estudiante aprendiendo los fundamentos de CSS"
             >
@@ -722,8 +759,7 @@
 
                 el borde
 
-                y el redondeado de las esquinas
-                de esta imagen.
+                y el redondeado de las esquinas.
             </p>
 
 
@@ -737,12 +773,12 @@
 
 
         <!-- ========================================
-             7. RECORDATORIO FINAL
+             8. RECORDATORIO FINAL
              ======================================== -->
 
         <section id="recordatorio">
 
-            <h2>7. Antes de escribir CSS, piensa</h2>
+            <h2>8. Antes de escribir CSS, piensa</h2>
 
 
             <ol>
